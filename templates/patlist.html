@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+{% block body %}
+
+    <div class="container-fluid  row">
+      <div class="col-md-10 my-3"><h2>Patient List</h2></div>
+      <div class="col-md-2 my-3"><a href="/patreg"type="button" class="btn btn-outline-dark">New Patient</a></div>
+    </div>
+
+  <div class="container-fluid">
+<table class="table my-3">
+    <thead>
+        <tr>
+          <th scope="col">Sl.No.</th>
+          <th scope="col">Date</th>
+          <th scope="col">Patient Name</th>
+          <th scope="col">Address</th>
+          <th scope="col">Age</th>
+          <th scope="col">Sex</th>
+          <th scope="col">Status</th>
+          
+        </tr>
+      </thead>
+    {% for pat in patlist %}
+         
+    <tbody>
+        <tr>
+          <th scope="row">{{loop.index}}</th>
+          <td>{{pat.date}}</td>
+          <td>{{pat.name}}</td>
+          <td>{{pat.address}}</td>
+          <td>{{pat.age}}</td>
+          <td>{% if pat.sex == "1" %}
+            Male
+            
+              
+            {% else %}
+              Female
+            
+          {% endif %}</td>
+          <td>New-Reg</td>
+        </tr>
+      </tbody>
+    {% endfor %}
+   
+  </table>
+  </div>
+{% endblock body %}
